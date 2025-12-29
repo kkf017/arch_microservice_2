@@ -9,4 +9,8 @@ def random_n_chars(n:int)->str:
     """
     Function to generate a random string (n chars).
     """
-    return "".join([random.choice(CHAR) for _ in range(n)])
+    try:
+        return "".join([random.choice(CHAR) for _ in range(n)])
+    except Exception as err:
+        logger.error(f"Error while generating random string.")
+    return None
