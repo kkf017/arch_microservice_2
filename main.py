@@ -1,5 +1,5 @@
 import os, json
-#from logging_module.handler import logger
+from logging_module.handler import logger
 import core.run
 
 #input_file = os.getenv("INPUT_FILE", os.path.join(".", "input"))
