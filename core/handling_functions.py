@@ -11,7 +11,7 @@ def function(inputs:Dict[str, bool])->None:
 	"""
 	start_time = datetime.datetime.now()
 
-	infrastructure.driver_txt.write_by_lines(filename="./helpers/test_2.txt", txt=["Write new function.","New File."])
+	pass
 
 	end_time = datetime.datetime.now()
 	logger.info(f"Execution Time: {end_time - start_time}s.")
