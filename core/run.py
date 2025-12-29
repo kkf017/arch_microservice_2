@@ -2,10 +2,10 @@ import os
 from config.loader import *
 from logging_module.handler import logger
 import core.handling_functions
-from typing import Dict
+from typing import Dict, List, Any
 
 
-def run(inputs: Dict[str, bool])->None:
+def run(inputs: List[str])->None:
 	"""
 	Function to run main function.
 	"""

@@ -2,16 +2,34 @@ import os, sys, time, datetime
 from config.loader import *
 from logging_module.handler import logger
 import infrastructure.driver_txt, core.handling_string.handling_string
-from typing import Dict
+from typing import Dict, List, Any
+
+def argparse(inputs:List[str])->Dict[str,Any]:
+    """
+    Function to parse args (command).
+    """
+    args = {
+            "-n":8,
+            "default":None
+        }
+    if "-n" in inputs:
+        try:
+            args["-n"] = int(inputs[inputs.index("-n")+1])
+        except Exception  as err:
+            logger.warning(f"Error while getting -n arg from command.")
+    return args
 
 
-def function(inputs:Dict[str, bool])->None:
+def function(inputs:List[str])->None:
 	"""
 	Function to execute main code.
 	"""
 	start_time = datetime.datetime.now()
 
-	x = core.handling_string.handling_string.random_n_chars(n=16)
+	args = argparse(inputs=inputs)
+	logger.info(f"Arguments: {args}")
+
+	x = core.handling_string.handling_string.random_n_chars(n=args["-n"])
 	logger.info(f"Random string: {x}")
 
 	end_time = datetime.datetime.now()
