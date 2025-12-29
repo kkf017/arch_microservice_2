@@ -12,11 +12,11 @@ def argparse(inputs:List[str])->Dict[str,Any]:
             "-n":8,
             "default":None
         }
-    if "-n" in inputs:
-        try:
+    try:
+        if "-n" in inputs:
             args["-n"] = int(inputs[inputs.index("-n")+1])
-        except Exception  as err:
-            logger.warning(f"Error while getting -n arg from command.")
+    except Exception  as err:
+        logger.warning(f"Error while getting -n arg from command.")
     return args
 
 
