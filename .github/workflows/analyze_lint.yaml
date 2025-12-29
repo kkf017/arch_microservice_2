@@ -1,0 +1,24 @@
+name: Test Pylint (static code)
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.11'
+
+    - name: Install Pylint
+      run: pip install pylint
+
+    - name: Run Pylint
+      run: |
+         pylint $(git ls-files '*.py')
