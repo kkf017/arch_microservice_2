@@ -4,7 +4,7 @@ from logging_module.handler import logger
 from typing import List
 
 
-def read_by_lines(filename:str)->List[str]:
+def read_by_lines(filename: str) -> List[str]:
     """
     Function to read a file (txt).
     """
@@ -15,7 +15,8 @@ def read_by_lines(filename:str)->List[str]:
         logger.error(f"Error while reading file by line.")
     return None
 
-def read_txt(filename:str)->str:
+
+def read_txt(filename: str) -> str:
     """
     Function to read a file (txt).
     """
@@ -26,7 +27,8 @@ def read_txt(filename:str)->str:
         logger.error(f"Error while reading file.")
     return None
 
-def write_txt(filename:str, txt:str)->None:
+
+def write_txt(filename: str, txt: str) -> None:
     """
     Function to write a file (txt).
     """
@@ -36,7 +38,8 @@ def write_txt(filename:str, txt:str)->None:
     except Exception as err:
         logger.error(f"Error while writing file.")
 
-def write_by_lines(filename:str, txt:List[str])->None:
+
+def write_by_lines(filename: str, txt: List[str]) -> None:
     """
     Function to write a file (txt).
     """
