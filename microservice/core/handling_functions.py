@@ -1,7 +1,7 @@
 """Module to manage main function (calls)."""
 
 import copy
-from datetime import datetime
+import time
 from typing import Dict, List, Any
 from microservice.config.loader import ARGS
 from microservice.logging_module.handler import logger
@@ -25,7 +25,7 @@ def function(inputs: List[str]) -> None:
     """
     Function to execute main code.
     """
-    start_time = datetime.now()
+    start_time = time.time()
 
     logger.info(f"Argv: {inputs}")
 
@@ -35,5 +35,5 @@ def function(inputs: List[str]) -> None:
     x = microservice.core.handling_string.handling_string.random_n_chars(n=args["-n"])
     logger.info(f"Random string: {x}")
 
-    end_time = datetime.datetime.now()
+    end_time = time.time()
     logger.info(f"Execution Time: {end_time - start_time}s.")
