@@ -6,10 +6,10 @@ ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
 # Set the working directory in the container
-WORKDIR .
+WORKDIR ./
 
 # Copy the requirements file into the container
-COPY requirements.txt .
+COPY requirements.txt ./
 
 # Install system dependencies and Python packages
 RUN apt update && apt upgrade -y &&\
@@ -17,12 +17,12 @@ RUN apt update && apt upgrade -y &&\
   pip install -U pip &&\
   pip install -r requirements.txt
 
-COPY . .
+COPY . ./
 
 # RUNTIME STAGE
 FROM python:${PYTHON_VERSION}-slim-buster AS runtime
 
-COPY --from=builder . .
+COPY --from=builder . ./
 
 RUN chmod u+x entrypoint.sh
 ENTRYPOINT ["bash", "entrypoint.sh" ]
