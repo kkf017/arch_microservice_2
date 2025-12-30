@@ -1,4 +1,4 @@
-name: Test (static & dynamic code)
+name: Test code
 
 on:
   workflow_dispatch:
