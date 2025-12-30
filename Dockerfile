@@ -6,10 +6,10 @@ ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
 # Set the working directory in the container
-WORKDIR .
+WORKDIR /microservice
 
 # Copy the requirements file into the container
-COPY requirements.txt .
+COPY requirements.txt /microservice
 
 # Install system dependencies and Python packages
 RUN apt update && apt upgrade -y &&\
@@ -17,15 +17,16 @@ RUN apt update && apt upgrade -y &&\
   pip install -U pip &&\
   pip install -r requirements.txt
 
-COPY . .
+COPY ./microservice /microservice
+COPY ./entrypoint.sh /microservice
 
 # RUNTIME STAGE
 FROM python:${PYTHON_VERSION}-slim-buster AS runtime
 
-COPY --from=builder . .
+COPY --from=builder /microservice /microservice
 
-RUN chmod u+x entrypoint.sh
-ENTRYPOINT ["bash", "entrypoint.sh" ]
+RUN chmod u+x /microservice/entrypoint.sh
+ENTRYPOINT ["bash", "/microservice/entrypoint.sh" ]
 
 #  command: docker run --name "sync_{{ app_name }}_validator_1" -d
 # -v "{{ base_path }}/92_DATA_LAKE/:/data/92_DATA_LAKE/"
