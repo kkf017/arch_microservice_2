@@ -1,4 +1,4 @@
-name: Test Pylint (static code)
+name: Test (static code)
 
 on:
   workflow_dispatch:
@@ -19,6 +19,13 @@ jobs:
     - name: Install Pylint
       run: pip install pylint
 
+    - name: Install Mypy
+      run: pip install mypy
+
     - name: Run Pylint
       run: |
          pylint $(git ls-files '*.py')
+
+    - name: Run Mypy
+      run: |
+         mypy $(git ls-files '*.py')
