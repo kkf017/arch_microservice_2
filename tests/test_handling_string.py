@@ -15,12 +15,12 @@ def test_random_n_chars_1():
     assert len(x) == 16
 
 
-def test_random_n_chars_2(capsys):
+def test_random_n_chars_2():
     """
     Function to check if TypeError is raised when input is string.
     .test error
     """
-    with pytest.raises(TypeError) as e:
+    with pytest.raises(TypeError):
         random_n_chars(n="abc")
 
 def test_random_n_chars_3():
