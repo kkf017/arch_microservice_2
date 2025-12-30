@@ -15,4 +15,4 @@ def random_n_chars(n: int) -> str:
         return "".join([random.choice(CHAR) for _ in range(n)])
     except TypeError as err:
         logger.error(f"Error while generating random string. {err}")
-    return None
+    return ""

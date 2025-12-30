@@ -14,7 +14,7 @@ def read_by_lines(filename: str) -> List[str]:
             return f.readlines()
     except FileNotFoundError as err:
         logger.error(f"Error while reading file by line. {err}")
-    return None
+    return []
 
 
 def read_txt(filename: str) -> str:
@@ -26,7 +26,7 @@ def read_txt(filename: str) -> str:
             return f.read()
     except FileNotFoundError as err:
         logger.error(f"Error while reading file. {err}")
-    return None
+    return ""
 
 
 def write_txt(filename: str, txt: str) -> None:
