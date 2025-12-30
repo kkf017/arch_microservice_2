@@ -2,4 +2,4 @@
 
 echo "[ENTRYPOINT] Start microservice."
 
-python3 ./app/main.py $@
+python -m microservice.main $@
