@@ -19,12 +19,12 @@ jobs:
     - name: Install Pylint
       run: pip install pylint
 
+    - name: Install Mypy
+      run: pip install mypy
+
     - name: Run Pylint
       run: |
          pylint $(git ls-files '*.py')
-
-    - name: Install Mypy
-      run: pip install mypy
 
     - name: Run Mypy
       run: |
