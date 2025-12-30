@@ -1,3 +1,5 @@
+"""Module to create logger."""
+
 from datetime import datetime, timezone
 import logging
 from microservice.logging_module.handling_logger import Logger

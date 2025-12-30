@@ -1,3 +1,5 @@
+"""Class to manage logging."""
+
 import logging
 
 

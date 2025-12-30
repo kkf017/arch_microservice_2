@@ -1,3 +1,5 @@
+"""File to manage modules."""
+
 from microservice.core.run import *
 from microservice.config.loader import *
 from microservice.config.setup import *

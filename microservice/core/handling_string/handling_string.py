@@ -1,5 +1,7 @@
-import os, sys, random, string
-from microservice.config.setup import *
+"""Module to generate random strings."""
+
+import random
+import string
 from microservice.logging_module.handler import logger
 
 CHAR = string.ascii_letters + string.digits
@@ -11,6 +13,6 @@ def random_n_chars(n: int) -> str:
     """
     try:
         return "".join([random.choice(CHAR) for _ in range(n)])
-    except Exception as err:
-        logger.error(f"Error while generating random string.")
+    except TypeError as err:
+        logger.error(f"Error while generating random string. {err}")
     return None
