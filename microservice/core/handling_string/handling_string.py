@@ -2,7 +2,7 @@
 
 import random
 import string
-from microservice.logging_module.handler import logger
+#from microservice.logging_module.handler import logger
 
 CHAR = string.ascii_letters + string.digits
 
