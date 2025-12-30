@@ -1,7 +1,8 @@
-import os, sys, datetime, shutil
-from microservice.config.loader import *
-from microservice.logging_module.handler import logger
+"""Module to read and write .txt files."""
+
+# import datetime, shutil
 from typing import List
+from microservice.logging_module.handler import logger
 
 
 def read_by_lines(filename: str) -> List[str]:
@@ -11,8 +12,8 @@ def read_by_lines(filename: str) -> List[str]:
     try:
         with open(filename) as f:
             return f.readlines()
-    except Exception as err:
-        logger.error(f"Error while reading file by line.")
+    except FileNotFoundError as err:
+        logger.error(f"Error while reading file by line. {err}")
     return None
 
 
@@ -23,8 +24,8 @@ def read_txt(filename: str) -> str:
     try:
         with open(filename) as f:
             return f.read()
-    except Exception as err:
-        logger.error(f"Error while reading file.")
+    except FileNotFoundError as err:
+        logger.error(f"Error while reading file. {err}")
     return None
 
 
@@ -35,8 +36,8 @@ def write_txt(filename: str, txt: str) -> None:
     try:
         with open(filename, "w") as f:
             f.write(txt)
-    except Exception as err:
-        logger.error(f"Error while writing file.")
+    except FileNotFoundError as err:
+        logger.error(f"Error while writing file. {err}")
 
 
 def write_by_lines(filename: str, txt: List[str]) -> None:
@@ -45,5 +46,5 @@ def write_by_lines(filename: str, txt: List[str]) -> None:
     """
     try:
         write_txt(filename=filename, txt="\n".join(txt))
-    except Exception as err:
-        logger.error(f"Error while writing file by line.")
+    except FileNotFoundError as err:
+        logger.error(f"Error while writing file by line. {err}")
