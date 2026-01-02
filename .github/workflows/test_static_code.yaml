@@ -70,6 +70,14 @@ jobs:
     - name: Install pip-audit
       run: pip install pip-audit
 
+    - name: Install bandit
+      run: pip install bandit
+
     - name: Run pip-audit
       run: |
          pip-audit -r ${{ github.workspace }}/requirements.txt --fix
+
+    - name: Run bandit
+      run: |
+         bandit -r ${{ github.workspace }}/microservice
+
