@@ -53,3 +53,23 @@ jobs:
     - name: Run Pytest (test_handling_string)
       run: |
          pytest -v -s
+
+  vuln_scan:
+    name: "Test vulnerability scan"
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v3
+      with:
+        python-version: '3.11'
+
+    - name: Install pip-audit
+      run: pip install pip-audit
+
+    - name: Run pip-audit
+      run: |
+         pip-audit --desc .
