@@ -4,15 +4,16 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  check:
+    name: "Test static code"
     runs-on: ubuntu-latest
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - name: Set up Python
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@v3
       with:
         python-version: '3.11'
 
@@ -22,9 +23,6 @@ jobs:
     - name: Install Mypy
       run: pip install mypy
 
-    - name: Install Pytest
-      run: pip install pytest
-
     - name: Run Pylint
       run: |
          pylint $(git ls-files '*.py')
@@ -32,6 +30,22 @@ jobs:
     - name: Run Mypy
       run: |
          mypy $(git ls-files '*.py')
+
+  test:
+    name: "Test dynamic code"
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v3
+      with:
+        python-version: '3.11'
+
+    - name: Install Pytest
+      run: pip install pytest
 
     - name: Run Pytest (test_handling_string)
       run: |
