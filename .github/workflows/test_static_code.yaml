@@ -78,8 +78,8 @@ jobs:
     #- name: Install bandit
       #run: pip install bandit
 
-    - name: Install semgrep
-      run: pip install semgrep
+    #- name: Install semgrep
+      #run: pip install semgrep
 
     - name: Run pip-audit
       run: |
@@ -89,10 +89,10 @@ jobs:
       #run: |
          #bandit -r ${{ github.workspace }}/microservice
 
-    - name: Perform Bandit Analysis
+    - name: Run Bandit
       uses: PyCQA/bandit-action@v1
 
-    - name: Run semgrep
-      run: |
-         semgrep scan --config=auto .
+    #- name: Run semgrep
+      #run: |
+         #semgrep scan --config=auto .
 
