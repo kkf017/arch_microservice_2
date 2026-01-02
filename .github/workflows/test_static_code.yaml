@@ -77,7 +77,10 @@ jobs:
       run: |
          pip-audit -r ${{ github.workspace }}/requirements.txt --fix
 
-    - name: Run bandit
-      run: |
-         bandit -r ${{ github.workspace }}/microservice
+    #- name: Run bandit
+      #run: |
+         #bandit -r ${{ github.workspace }}/microservice
+
+    - name: Perform Bandit Analysis
+      uses: PyCQA/bandit-action@v1
 
