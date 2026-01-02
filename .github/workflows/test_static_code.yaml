@@ -28,7 +28,7 @@ jobs:
 
     - name: Run Pylint
       run: |
-         pylint ${{ github.workspace }}/*.py
+         pylint $(git ls-files '*.py')
 
     - name: Run Mypy
       run: |
@@ -72,4 +72,4 @@ jobs:
 
     - name: Run pip-audit
       run: |
-         pip-audit --desc ${{ github.workspace }}
+         pip-audit ${{ github.workspace }}/microservice
