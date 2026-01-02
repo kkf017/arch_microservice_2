@@ -75,8 +75,11 @@ jobs:
     - name: Install pip-audit
       run: pip install pip-audit
 
-    - name: Install bandit
-      run: pip install bandit
+    #- name: Install bandit
+      #run: pip install bandit
+
+    - name: Install semgrep
+      run: pip install semgrep
 
     - name: Run pip-audit
       run: |
@@ -88,4 +91,8 @@ jobs:
 
     - name: Perform Bandit Analysis
       uses: PyCQA/bandit-action@v1
+
+    - name: Run semgrep
+      run: |
+         semgrep scan --config=auto .
 
