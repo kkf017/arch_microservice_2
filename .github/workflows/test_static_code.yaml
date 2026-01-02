@@ -87,5 +87,5 @@ jobs:
          #bandit -r ${{ github.workspace }}/microservice
 
     - name: Perform Bandit Analysis
-      uses: PyCQA/bandit-action@v2
+      uses: PyCQA/bandit-action@v1
 
