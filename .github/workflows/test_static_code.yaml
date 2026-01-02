@@ -72,4 +72,4 @@ jobs:
 
     - name: Run pip-audit
       run: |
-         pip-audit -r ${{ github.workspace }}/requirements.txt
+         pip-audit -r ${{ github.workspace }}/requirements.txt --fix
