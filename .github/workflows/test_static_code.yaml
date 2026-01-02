@@ -53,3 +53,46 @@ jobs:
     - name: Run Pytest (test_handling_string)
       run: |
          pytest -v -s
+
+  vuln_scan:
+    name: "Test vulnerability scan"
+    runs-on: ubuntu-latest
+    permissions:
+            # Required for all workflows
+            security-events: write
+            # Only required for workflows in private repositories
+            actions: read
+            contents: read
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v3
+      with:
+        python-version: '3.11'
+
+    - name: Install pip-audit
+      run: pip install pip-audit
+
+    #- name: Install bandit
+      #run: pip install bandit
+
+    #- name: Install semgrep
+      #run: pip install semgrep
+
+    - name: Run pip-audit
+      run: |
+         pip-audit -r ${{ github.workspace }}/requirements.txt --fix
+
+    #- name: Run bandit
+      #run: |
+         #bandit -r ${{ github.workspace }}/microservice
+
+    - name: Run Bandit
+      uses: PyCQA/bandit-action@v1
+
+    #- name: Run semgrep
+      #run: |
+         #semgrep scan --config=auto .
+
